@@ -41,7 +41,7 @@ ALTER TABLE produtos
     FOREIGN KEY (fabricante_id) REFERENCES fabricantes(id);
 ```
 
-### Comando de SQL para adicionar mais um campo/coluna em uma tabela
+### Comando de SQL para adicionar mais um campo/coluna em uma tabela com esse comando é possivel manipular com comandos (ADD, REMOVE, RENAME, CHANGE)
 ```sql
 ALTER TABLE produtos ADD fabricante_id INT NOT NULL AFTER preco;
 ```
