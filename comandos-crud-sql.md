@@ -75,4 +75,11 @@ SELECT nome, descricao FROM produtos WHERE fabricante_id = 3;
 ```sql
 SELECT * FROM produtos WHERE preco >= 5000 AND preco < 8000;
 SELECT nome, preco FROM produtos WHERE fabricante_id = 3 OR fabricante_id = 8;
+WHERE fabricante_id IN(3, 8);
+```
+
+```sql
+ # o operador (!=) também funciona para comparar
+SELECT nome, preco, quantidade FROM produtos WHERE NOT  fabricante_id = 3;
+SELECT nome, preco, quantidade FROM produtos WHERE fabricante_id != 3;
 ```
