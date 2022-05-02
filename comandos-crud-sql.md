@@ -1,0 +1,63 @@
+# Comandos SQL para CRUD - Referência 
+
+## Resumo
+
+- C -> Create (Inserir dados)
+- R -> Read (Ler dados)
+- U -> Update (Atualizar dados)
+- D -> Delete (Deletar dados)
+
+## INSERT
+<!-- Inserindo dados na TABELA, em seguida o CAMPO, em seguida os VALORES. -->
+```sql
+INSERT INTO fabricantes (nome) VALUES('Asus');
+INSERT INTO fabricantes (nome) VALUES('Dell');
+INSERT INTO fabricantes (nome)
+VALUES('Apple'),('LG'),('Samsung'), ('Brastemp');
+```
+
+### Produtos
+```sql
+INSERT INTO produtos(nome, descricao, preco, quantidade, fabricante_id) VALUES(
+    'Ultrabook',
+    'Ultrabook Asus, com processador Intel core i9, memória RAM 16 GB e Windows 11PRO.',
+    6500.99,
+    25,
+    1
+);
+```
+
+```sql
+INSERT INTO produtos(nome, descricao, preco, quantidade, fabricante_id) VALUES(
+    'Tabela Android',
+    'Tablet com a versão 12 do sistema operacional da Google, possui tela de 10 polegadas e armazenamento 64GB.',
+    4999.99,
+    5,
+    5 # fabricantes_id(Samsung)
+);
+```
+
+```sql
+INSERT INTO produtos(nome, descricao, preco, quantidade, fabricante_id) VALUES(
+   'Geladeira',
+   'Refrigerador Frost-Free com acesso à internet das Coisas e bla bla bla',
+   1600,
+   10,
+   6 # Brastemp
+),
+(
+    'Iphone 13 Pro Max',
+    'Alta durabilidade, Processador Bionic 14, 128 GB de armazenamento',
+    6999.99,
+    3,
+    3 # Apple
+),
+(
+    'iPad Mini',
+    'Tablet Apple com tela retina display de 4k, memória interna de 64GB, acesso ao iCloud.',
+    5000,
+    8,
+    3 #Apple
+);
+```
+
