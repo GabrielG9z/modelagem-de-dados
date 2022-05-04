@@ -100,5 +100,21 @@ SELECT SUM(quantidade) AS "Quantidade em Estoque" FROM produtos;
 SELECT SUM(quantidade) AS "Quantidade em Estoque" FROM produtos WHERE fabricante_id = 3; --Comando WHERE (específica a área de busca desejada.) Apple
 -- AVG (AVERAGE) MÉDIA
 SELECT AVG(preco) AS "Média dos Preços" FROM produtos;
-SELECT ROUND(AVG(preco), 2) AS "Média dos Preços" FROM produtos; --ROUND(arredonda os valores)
+--ROUND(arredonda os valores, a vírgula determina as casas decimais)
+SELECT ROUND(AVG(preco), 2) AS "Média dos Preços" FROM produtos; 
+-- DISTINCT (Comando para evitar que o SQL recupere os números que tem uma ocorrência de id (Evita duplicatas). maior que 1)
+SELECT COUNT(DISTINCT fabricante_id) AS "Qtd de Produtos" FROM produtos;
+SELECT COUNT(DISTINCT fabricante_id) AS "Qtd de Fabricantes" FROM fabricantes;
+SELECT nome, preco, quantidade, (preco * quantidade) AS Total FROM produtos;
+
+-- Comando via SQL
+INSERT INTO `produtos` (`id`, `nome`, `descricao`, `preco`, `quantidade`, `fabricante_id`) VALUES (NULL, 'Teclado Gamer', 'Teclado de última geração com teclas quânticas e mecânicas, ótimo tempo de resposta e bla bla bla. Ah e led embutido. teclado rosa que toca música da barbie.', '300', '8', '8'), (NULL, 'Placa Mãe', 'Placa com diversos slots de memória RAM, com diversos Slots DDR6, suporte a processadores Intel i9 de 11°Geração', '1200', '5', '1')
+
+```
+
+### Agrupamento
+```sql
+SELECT SUM(preco),AS Total FROM produtos;
+-- GROUP BY Permite segmentar resultados da consulta. Neste caso, somamos todos os preços e segmentamos/ agrupamos por cada fabricante.
+SELECT  fabricante_id, SUM(preco) AS Total FROM produtos GROUP BY fabricante_id; 
 ```
