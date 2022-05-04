@@ -83,3 +83,22 @@ WHERE fabricante_id IN(3, 8);
 SELECT nome, preco, quantidade FROM produtos WHERE NOT  fabricante_id = 3;
 SELECT nome, preco, quantidade FROM produtos WHERE fabricante_id != 3;
 ```
+
+### Filtros
+```sql 
+SELECT nome, preco FROM produtos ORDER BY nome; --ASC(Ordem crescente. Já e o modo de busca padrão)
+SELECT nome, preco FROM produtos ORDER BY nome DESC; --(Ordem decrescente.)
+SELECT nome, descricao FROM produtos WHERE descricao LIKE '%processador%'; --LIKE (Como) (% Operador Coringa- Significa qualquer texto antes e depois da palavra selecionada)
+```
+
+### Operações e Funções de agregação
+```sql
+SELECT SUM(preco) FROM produtos;
+SELECT SUM(preco) AS TOTAL --ALIAS (APELIDO)
+FROM produtos;
+SELECT SUM(quantidade) AS "Quantidade em Estoque" FROM produtos;
+SELECT SUM(quantidade) AS "Quantidade em Estoque" FROM produtos WHERE fabricante_id = 3; --Comando WHERE (específica a área de busca desejada.) Apple
+-- AVG (AVERAGE) MÉDIA
+SELECT AVG(preco) AS "Média dos Preços" FROM produtos;
+SELECT ROUND(AVG(preco), 2) AS "Média dos Preços" FROM produtos; --ROUND(arredonda os valores)
+```
