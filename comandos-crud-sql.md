@@ -118,3 +118,11 @@ SELECT SUM(preco),AS Total FROM produtos;
 -- GROUP BY Permite segmentar resultados da consulta. Neste caso, somamos todos os preços e segmentamos/ agrupamos por cada fabricante.
 SELECT  fabricante_id, SUM(preco) AS Total FROM produtos GROUP BY fabricante_id; 
 ```
+
+### UPDATE
+
+## Atualizar dados de uma tabela
+## Update Sempre com WHERE
+```sql
+UPDATE fabricantes SET nome = 'Microsoft Brasil' WHERE id =8;
+```
