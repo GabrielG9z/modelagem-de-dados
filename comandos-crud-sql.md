@@ -137,3 +137,44 @@ DELETE FROM fabricantes WHERE id = 4;
 
 DELETE FROM produtos WHERE preco <= 2000 AND preco > 500;
 ```
+
+### Consultas em duas ou mais tabelas (JUNÇÃO)
+```sql
+-- SELECT nomeDaTabela.nomeDaColuna
+SELECT produtos.nome, fabricantes.nome FROM
+--INNER JOIN é o comando que permite JUNTAR tabelas
+ produtos INNER JOIN fabricantes
+ -- ON comando para indicar o critério da junção
+  ON produtos.fabricante_id = fabricantes.id;
+
+SELECT produtos.nome AS Produto, fabricantes.nome AS Fabricante FROM
+ produtos INNER JOIN fabricantes
+  ON produtos.fabricante_id = fabricantes.id ORDER BY produtos.nome, fabricantes.nome;
+
+-- Fabricante, soma dos preços e quantidade de produtos
+SELECT fabricantes.nome AS Fabricante, SUM(produtos.preco) AS Total,
+COUNT(produtos.fabricante_id) AS "Qtd de Produtos" FROM produtos INNER JOIN fabricantes ON produtos.fabricante_id = fabricantes.id GROUP BY Fabricante
+ORDER BY Total;
+-- Trazer a quantidade de produtos de cada fabricante
+SELECT fabricantes.nome AS Fabricante,COUNT(produtos.quantidade) AS "Qtd de Produtos" FROM produtos INNER JOIN fabricantes ON produtos.quantidade = quantidade GROUP BY quantidade
+ORDER BY quantidade;
+--Correção
+
+-- INNER JOIN Traz os registros somente daqueles fabricantes que tem produtos, os que não correspondem a condição não são exibidos
+SELECT
+    fabricantes.nome AS Fabricante
+    COUNT(produtos.id) AS "Quantidade de Produtos",
+FROM produtos INNER JOIN fabricantes ON produtos.fabricante_id = fabricantes.id GROUP BY Fabricante
+
+--RIGHT JOIN Traz os registros mesmo daqueles fabricantes que não tem produtos.
+SELECT
+    fabricantes.nome AS Fabricante,
+    COUNT(produtos.id) AS "Quantidade de Produtos"
+FROM produtos RIGHT JOIN fabricantes ON produtos.fabricante_id = fabricantes.id GROUP BY Fabricante
+
+--LEFT JOIN Traz os registros mesmo daqueles fabricantes que não tem produtos.
+SELECT
+    fabricantes.nome AS Fabricante,
+    COUNT(produtos.id) AS "Quantidade de Produtos",
+FROM produtos LEFT JOIN fabricantes ON produtos.fabricante_id = fabricantes.id GROUP BY Fabricante
+```
