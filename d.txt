@@ -1,0 +1,7 @@
+CREATE TABLE professores(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    area ENUM('design','desenvolvimento','infra') NOT NULL,
+    curso_id INT NOT NULL
+);
+ALTER TABLE professores ADD CONSTRAINT fk_professores FOREIGN KEY (curso_id) REFERENCES professores(id);
